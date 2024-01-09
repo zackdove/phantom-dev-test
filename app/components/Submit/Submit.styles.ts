@@ -35,5 +35,9 @@ export const Wrapper = styled.div`
     text-transform: uppercase;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.9);
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
   }
 `;
