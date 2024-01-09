@@ -3,6 +3,8 @@
 import { bookmark, useBookmarks } from "@/lib/features/bookmarks/bookmarks";
 import * as Styled from "./List.styles";
 import { useState } from "react";
+import { Pagination } from "../Pagination/Pagination";
+import { useSearchParams } from "next/navigation";
 
 interface ListProps {}
 
@@ -13,7 +15,18 @@ const List = ({}: ListProps) => {
   const rows = [];
   const { bookmarks } = useBookmarks();
 
-  for (let i = 0; i < bookmarks.length; i++) {
+  const bookmarkPageLimit = 20;
+  const totalPages = Math.ceil(bookmarks.length / bookmarkPageLimit);
+  console.log(bookmarks.length);
+
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams?.get("page")) || 1;
+
+  for (
+    let i = (currentPage - 1) * bookmarkPageLimit;
+    i < currentPage * bookmarkPageLimit && i < bookmarks.length;
+    i++
+  ) {
     const b = bookmarks[i];
     rows.push(<Bookmark key={i} b={b} />);
   }
@@ -22,6 +35,7 @@ const List = ({}: ListProps) => {
     <Styled.Wrapper>
       <h5>Bookmarks</h5>
       <ul>{rows}</ul>
+      <Pagination totalPages={totalPages} />
     </Styled.Wrapper>
   );
 };

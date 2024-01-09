@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     list-style-type: none;
     padding: 0;
     margin: 16px 0;
-    /* max-height: 400px; */
+    max-height: 400px;
     overflow-y: scroll;
   }
 `;
