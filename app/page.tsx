@@ -6,8 +6,17 @@ export default function Home() {
   return (
     <main>
       <Styled.Wrapper>
+        <div>
+          <Styled.Logo
+            src="/phntm-logo.svg"
+            alt="Phantom Logo"
+            width={80}
+            height={80}
+          />{" "}
+          <Submit />
+        </div>
+
         <List />
-        <Submit />
       </Styled.Wrapper>
     </main>
   );
