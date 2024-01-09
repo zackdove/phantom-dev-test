@@ -2,10 +2,12 @@
 
 import { useBookmarks } from "@/lib/features/bookmarks/bookmarks";
 import * as Styled from "./Submit.styles";
+import { useRouter } from "next/navigation";
 
 interface SubmitProps {}
 
 const Submit = ({}: SubmitProps) => {
+  const router = useRouter();
   const { addBookmark } = useBookmarks();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -19,6 +21,8 @@ const Submit = ({}: SubmitProps) => {
     const name = target.name.value;
 
     addBookmark({ url, name });
+
+    router.push("/result");
   };
 
   return (
