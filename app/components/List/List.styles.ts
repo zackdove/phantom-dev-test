@@ -43,6 +43,7 @@ export const PopupWrapper = styled.div<{ $active?: boolean }>`
   transition: opacity 0.3s;
   opacity: ${(props) => (props.$active ? 1 : 0)};
   pointer-events: ${(props) => (props.$active ? "all" : "none")};
+  z-index: 99;
 `;
 
 export const PopupBackground = styled.div`
